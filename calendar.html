@@ -3,17 +3,21 @@
 	Aram alzuhairi
 	aram_alzuhairi@yahoo.com.au
 	reload work= https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/calendar.html
+
+
+	-- Data Picker not completed 
+
 -->
 
 <!DOCTYPE html>
 <html>
 <style>
-	.bgcolor1 .bgcolor3 .bgcolor5 .bgcolor7 .bgcolor9 .bgcolor11 {
-		background-color: #FCF6CF;
+	.bgcolor1 ,.bgcolor3 , .bgcolor5 , .bgcolor7 , .bgcolor9 , .bgcolor11 {
+		background-color: #EFEFEF;
 	}
 
-	.bgcolor2 .bgcolor4 .bgcolor6 .bgcolor8 .bgcolor10 .bgcolor12 {
-		background-color: #FEFEF2;
+	.bgcolor2 , .bgcolor4 , .bgcolor6 , .bgcolor8 , .bgcolor10 , .bgcolor12 {
+		background-color: #E1E1E1;
 	}
 </style>
 <!-- 22/6  -> 5/1 -->
@@ -28,15 +32,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-
-<!-- script src="calculateTimeAndDate.js"></script -->
-<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/1827f2e7e113f9a3301750bc260771f6c9f6ee10/calculateTimeAndDate.js"></script>
-
+<script src="calculateTimeAndDate.js"></script>
+<!--  
+<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/calculateTimeAndDate.js"></script>
+-->
 <script src="events.js"></script>
 
 <br><br>
 
-<body onload="onCalanderload();">
+<body onload="">
 
 	<!-- Date Piker -->
 	<div class="container">
@@ -51,95 +55,97 @@
 		</div>
 	</div>
 	<br><br>
-	<div class="col-12 col-sm-12 col-lg-12 container card">
+	<div class="col-12 col-sm-12 col-lg-12">
 
 		<SCRIPT LANGUAGE="JavaScript">
-			onCalanderload();
+		//	function initCalander() {}
+				onCalanderload();
 
-			month = new makeArray(12)
-			month[1] = "Ambra - امبرا"
-			month[2] = "Twra - تورا"
-			month[3] = "Slmy - صلمي"
-			month[4] = "SrTana - سرطانا"
-			month[5] = "Arya - اربا"
-			month[6] = "Shomblta - شمبلتا"
-			month[7] = "Qyna - قينا"
-			month[8] = "ArQwa - ارقوا"
-			month[9] = "HTya - هطيا"
-			month[10] = "Kdya - كديا"
-			month[11] = "Dwla - دولا"
-			month[12] = "Nwna - نونا"
-			month_length = new makeArray(12)
-			month_length[1] = 30
-			month_length[2] = 30
-			month_length[3] = 30
-			month_length[4] = 30
-			month_length[5] = 30
-			month_length[6] = 35
-			month_length[7] = 30
-			month_length[8] = 30
-			month_length[9] = 30
-			month_length[10] = 30
-			month_length[11] = 30
-			month_length[12] = 30
-			var dateCalanderCreated = new Date("7-18-2016")//new Date("1-8-2018") ;
-			var mandaeanCalanderCreated = { month: 11, day: 1, year: 2050 };   //{month:4 , day:25 , year:2052}; // 4-25 (8-1-2018)
-			
-			
-			var datePicker = $("#datepickerC").val().split('/') ;
-alert($("#datepickerC").val()); //datePicker[1]+"-"+datePicker[0]+"-"+datePicker[2] + 
-			today = new Date(datePicker[1]+"-"+datePicker[0]+"-"+datePicker[2]); // "1-14-2017"
-			var result = showDays(today, dateCalanderCreated); // find different in days
+				month = new makeArray(12)
+				month[1] = "Ambra - امبرا"
+				month[2] = "Twra - تورا"
+				month[3] = "Slmy - صلمي"
+				month[4] = "SrTana - سرطانا"
+				month[5] = "Arya - اريا"
+				month[6] = "Shomblta - شمبلتا"
+				month[7] = "Qyna - قينا"
+				month[8] = "ArQwa - ارقوا"
+				month[9] = "HTya - هطيا"
+				month[10] = "Kdya - كديا"
+				month[11] = "Dwla - دولا"
+				month[12] = "Nwna - نونا"
+				month_length = new makeArray(12)
+				month_length[1] = 30
+				month_length[2] = 30
+				month_length[3] = 30
+				month_length[4] = 30
+				month_length[5] = 30
+				month_length[6] = 35
+				month_length[7] = 30
+				month_length[8] = 30
+				month_length[9] = 30
+				month_length[10] = 30
+				month_length[11] = 30
+				month_length[12] = 30
+				var dateCalanderCreated = new Date("7-18-2016")//new Date("1-8-2018") ;
+				var mandaeanCalanderCreated = { month: 11, day: 1, year: 2050 };   //{month:4 , day:25 , year:2052}; // 4-25 (8-1-2018)
 
-			years = parseInt(result / 365); // number of years
-			daydeff = Math.abs(result) % 365;
+				var datePicker = $("#datepickerC").val().split('-');
+				today = new Date(datePicker[1] + "-" + datePicker[2] + "-" + datePicker[0]); // "1-14-2017"
+
+				var result = showDays(today, dateCalanderCreated); // find different in days
+
+				years = parseInt(result / 365); // number of years
+				daydeff = Math.abs(result) % 365;
 
 
-			var days = daydeff + 1; // 1 because we started from 1/1
+				var days = daydeff + 1; // 1 because we started from 1/1
 
-			var m = 0;
+				var m = 0;
 
-			//alert($.datepicker.formatDate('mm-dd-yy', $("#datepickerC").val() ));
-			//alert(daydeff + ">><<<" + m);
+				//alert($.datepicker.formatDate('mm-dd-yy', $("#datepickerC").val() ));
+				//alert(daydeff + ">><<<" + m);
 
-			var monthInOrder = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-			while (true) {
-				if (days > month_length[monthInOrder[m]]) {
-					days = days - month_length[monthInOrder[m]];
-					m++;
-					//	alert(days +"----"+m+(days>month_length[m]));
+				var monthInOrder = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+				while (true) {
+					if (days > month_length[monthInOrder[m]]) {
+						days = days - month_length[monthInOrder[m]];
+						m++;
+						//	alert(days +"----"+m+(days>month_length[m]));
+					}
+					else
+					{ break; }
 				}
-				else
-				{ break; }
-			}
-		//	alert(daydeff + ">><<<" + m);
-			// problem with 30 day and 35 the last days
-			this_day = days;//today.getDate();
-			this_month = monthInOrder[m];// today.getMonth()+1;
-			this_year = mandaeanCalanderCreated.year + years;// today.getFullYear();
+				//	alert(daydeff + ">><<<" + m);
+				// problem with 30 day and 35 the last days
+				this_day = days;//today.getDate();
+				this_month = monthInOrder[m];// today.getMonth()+1;
+				this_year = mandaeanCalanderCreated.year + years;// today.getFullYear();
 
-		//	alert(this_day + " / " + this_month + " / " + this_year);
-			//MM-DD-yyy
-			//begin_date = new Date("1-1-"+this_year)
-			//start_day = begin_date.getDay()+1
-			//if (start_day == 1){
-			//start_day = 8
-			//}
+				alert(this_day + " / " + this_month + " / " + this_year);
+				//MM-DD-yyy
+				//begin_date = new Date("1-1-"+this_year)
+				//start_day = begin_date.getDay()+1
+				//if (start_day == 1){
+				//start_day = 8
+				//}
 
-			for (var m = 1; m <= 12; m++) {
+				for (var m = 1; m <= 12; m++) {
 
-				fill_table(month[m], month_length[m], m);
+					fill_table(month[m], month_length[m], m);
 
-			}
-/* // used to but the tables side by side
-document.write("<table width='100%' height='100%'  border=0>");
-document.write("<tr><td>");
-document.write("</td><td>");
-fill_table(month[m+1],month_length[m+1],m+1);
-document.write("</td></tr>");
-document.write("</table>");
-*/
-// End
+				}
+				/* // used to but the tables side by side
+				document.write("<table width='100%' height='100%'  border=0>");
+				document.write("<tr><td>");
+				document.write("</td><td>");
+				fill_table(month[m+1],month_length[m+1],m+1);
+				document.write("</td></tr>");
+				document.write("</table>");
+				*/
+				// End
+			
+
 		</SCRIPT>
 
 	</div>

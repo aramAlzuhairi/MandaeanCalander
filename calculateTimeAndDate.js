@@ -7,8 +7,8 @@ function makeArray(n) {
 }
 
 function fill_table(m_name, m_length, mm) {
-    day = 1
-    document.write("<center><TABLE BORDER=3 CELLSPACING=3 CELLPADDING=%3 class='bgcolor1' style='font: 20px arial, sans-serif;'><TR>")
+    day = 1 ;
+    document.write("<center><TABLE BORDER=3 CELLSPACING=3 CELLPADDING=%3 class='bgcolor"+mm+"' style='font: 20px arial, sans-serif;'><TR>")
     document.write("<TD COLSPAN=7 ALIGN=center><B><p>" + m_name + "</p><p>" + this_year + "</p></B><TR>")
     day_title("Hbshba (هبشبا)")
     day_title("Etryn Hbshba (اترين هبشبا)")
@@ -61,7 +61,7 @@ function day_title(day_name) {
 
 function hilite_today(day, mm) {
     if ((this_day == day) && (this_month == mm)) {
-        document.write("<TD class='alert alert-primary' role='alert' ALIGN=center >")
+        document.write("<TD class='alert-info' ALIGN=center >")
         //document.write("<FONT class='text-danger'>");
     }
     else {
