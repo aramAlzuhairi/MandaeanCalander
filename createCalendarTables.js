@@ -39,7 +39,7 @@ function initCalander(is_1stcall) {
     today = new Date(datePicker[1] + "-" + datePicker[2] + "-" + datePicker[0]); // "1-14-2017"
 
     if (!isNaN(today.getTime())) // in Iphone ,Ipad, Mac
-        today = new Date("7/18/2017")
+        today = new Date(datePicker[1] + "/" + datePicker[2] + "/" + datePicker[0])
 
     var result = showDays(today, dateCalanderCreated); // find different in days
 
