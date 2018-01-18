@@ -3,155 +3,64 @@
 	Aram alzuhairi
 	aram_alzuhairi@yahoo.com.au
 	reload work= https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/calendar.html
-
-
-	-- Data Picker not completed 
-
 -->
+
 
 <!DOCTYPE html>
 <html>
-<style>
-	.bgcolor1 ,.bgcolor3 , .bgcolor5 , .bgcolor7 , .bgcolor9 , .bgcolor11 {
-		background-color: #FAFAFA;
-	}
 
-	.bgcolor2 , .bgcolor4 , .bgcolor6 , .bgcolor8 , .bgcolor10 , .bgcolor12 {
-		background-color: #E9E9E9;
-	}
-</style>
-<!-- 22/6  -> 5/1 -->
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.body-color {
+			background-color: #FAFAFA;
+		}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		.head-color {
+			background-color: #E9E9E9;
+		}
+	</style>
+	<!-- 22/6  -> 5/1 -->
 
-<link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--
-<script src="calculateTimeAndDate.js"></script>
-<script src="events.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+	<link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<!--
+	<script src="calculateTimeAndDate.js"></script>
+	<script src="createCalendarTables.js"></script>
 -->
-<!--  -->
-<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/calculateTimeAndDate.js"></script>
-<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/events.js"></script>
+	<!--  -->
+	<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/calculateTimeAndDate.js"></script>
+	<script src="https://rawgit.com/aramAlzuhairi/MandaeanCalander/master/createCalendarTables.js"></script>
 
 
+</head>
 
-<br><br>
 
-<body onload="">
+<body onload="initCalander(is_1stcall=1);">
 
 	<!-- Date Piker -->
 	<div class="container">
 		<div class="row">
-			<div class='col-sm-2'><strong>Pick a date:</strong></div>
-			<div class='col-sm-3'>
+			<div class='col-sm-4'>
+				<strong>Pick a date: </strong>
 				<input type='date' class="form-control" id='datepickerC' />
 			</div>
-			<div class='col-sm-2'>
-				<button id="lookForDate">look For Date</button>
+			<div class='col-sm-4'><br>
+				<button id="lookForDate" class="form-control btn-primary" onclick="initCalander(is_1stcall=0);">Click here to look For Date</button>
 			</div>
+		</div><br><br>
+		<div class="row">
+			<div class="col-12 col-sm-12 col-lg-12" id="tables"></div>
 		</div>
-	</div>
-	<br><br>
-	<div class="col-12 col-sm-12 col-lg-12">
-
-		<SCRIPT LANGUAGE="JavaScript">
-		//	function initCalander() {}
-				onCalanderload();
-
-				month = new makeArray(12)
-				month[1] = "Ambra - امبرا"
-				month[2] = "Twra - تورا"
-				month[3] = "Slmy - صلمي"
-				month[4] = "SrTana - سرطانا"
-				month[5] = "Arya - اريا"
-				month[6] = "Shomblta - شمبلتا"
-				month[7] = "Qyna - قينا"
-				month[8] = "ArQwa - ارقوا"
-				month[9] = "HTya - هطيا"
-				month[10] = "Kdya - كديا"
-				month[11] = "Dwla - دولا"
-				month[12] = "Nwna - نونا"
-				month_length = new makeArray(12)
-				month_length[1] = 30
-				month_length[2] = 30
-				month_length[3] = 30
-				month_length[4] = 30
-				month_length[5] = 30
-				month_length[6] = 35
-				month_length[7] = 30
-				month_length[8] = 30
-				month_length[9] = 30
-				month_length[10] = 30
-				month_length[11] = 30
-				month_length[12] = 30
-				var dateCalanderCreated = new Date("7-18-2016")//new Date("1-8-2018") ;
-				var mandaeanCalanderCreated = { month: 11, day: 1, year: 2050 };   //{month:4 , day:25 , year:2052}; // 4-25 (8-1-2018)
-
-				var datePicker = $("#datepickerC").val().split('-');
-				today = new Date(datePicker[1] + "-" + datePicker[2] + "-" + datePicker[0]); // "1-14-2017"
-
-				var result = showDays(today, dateCalanderCreated); // find different in days
-
-				years = parseInt(result / 365); // number of years
-				daydeff = Math.abs(result) % 365;
-
-
-				var days = daydeff + 1; // 1 because we started from 1/1
-
-				var m = 0;
-
-				//alert($.datepicker.formatDate('mm-dd-yy', $("#datepickerC").val() ));
-				//alert(daydeff + ">><<<" + m);
-
-				var monthInOrder = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-				while (true) {
-					if (days > month_length[monthInOrder[m]]) {
-						days = days - month_length[monthInOrder[m]];
-						m++;
-						//	alert(days +"----"+m+(days>month_length[m]));
-					}
-					else
-					{ break; }
-				}
-				//	alert(daydeff + ">><<<" + m);
-				// problem with 30 day and 35 the last days
-				this_day = days;//today.getDate();
-				this_month = monthInOrder[m];// today.getMonth()+1;
-				this_year = mandaeanCalanderCreated.year + years;// today.getFullYear();
-
-				alert(this_day + " / " + this_month + " / " + this_year);
-				//MM-DD-yyy
-				//begin_date = new Date("1-1-"+this_year)
-				//start_day = begin_date.getDay()+1
-				//if (start_day == 1){
-				//start_day = 8
-				//}
-
-				for (var m = 1; m <= 12; m++) {
-
-					fill_table(month[m], month_length[m], m);
-
-				}
-				/* // used to but the tables side by side
-				document.write("<table width='100%' height='100%'  border=0>");
-				document.write("<tr><td>");
-				document.write("</td><td>");
-				fill_table(month[m+1],month_length[m+1],m+1);
-				document.write("</td></tr>");
-				document.write("</table>");
-				*/
-				// End
-			
-
-		</SCRIPT>
-
 	</div>
 
 </body>
