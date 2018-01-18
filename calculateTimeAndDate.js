@@ -12,8 +12,8 @@ function showDays(firstDate, secondDate) {
     */
     var a = moment(firstDate);
     var b = moment(secondDate);
-    days = a.diff(b, 'days');
-
+   // days = a.diff(b, 'days');
+   days = 180;
     return days;
 }
 
