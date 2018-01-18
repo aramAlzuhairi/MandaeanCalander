@@ -51,8 +51,6 @@ function initCalander(is_1stcall) {
 
     var m = 0;
 
-    //alert($.datepicker.formatDate('mm-dd-yy', $("#datepickerC").val() ));
-    //alert(daydeff + ">><<<" + m);
 
     var monthInOrder = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     while (true) {
