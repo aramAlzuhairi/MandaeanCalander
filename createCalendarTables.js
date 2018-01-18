@@ -1,7 +1,7 @@
 
 function initCalander(is_1stcall) {
-    if(is_1stcall)
-    defaultdateToNow() ; //forDatePicker
+    if (is_1stcall)
+        defaultdateToNow(); //forDatePicker
     month = new makeArray(12)
     month[1] = "Ambra - امبرا"
     month[2] = "Twra - تورا"
@@ -28,13 +28,18 @@ function initCalander(is_1stcall) {
     month_length[10] = 30
     month_length[11] = 30
     month_length[12] = 30
-   
+
     var dateCalanderCreated = new Date("7-18-2017")//new Date("1-8-2018") ;
-     alert("dateCalanderCreated "+dateCalanderCreated);
+    if (!isNaN(dateCalanderCreated.getTime())) // in Iphone ,Ipad, Mac
+        dateCalanderCreated = new Date("7/18/2017")
+
     var mandaeanCalanderCreated = { month: 11, day: 1, year: 2052 };   //{month:4 , day:25 , year:2052}; // 4-25 (8-1-2018)
 
     var datePicker = $("#datepickerC").val().split('-');
     today = new Date(datePicker[1] + "-" + datePicker[2] + "-" + datePicker[0]); // "1-14-2017"
+
+    if (!isNaN(today.getTime())) // in Iphone ,Ipad, Mac
+        today = new Date("7/18/2017")
 
     var result = showDays(today, dateCalanderCreated); // find different in days
 
@@ -73,7 +78,7 @@ function initCalander(is_1stcall) {
     //start_day = 8
     //}
 
-    var HtmlScript="";
+    var HtmlScript = "";
 
     for (var m = 1; m <= 12; m++) {
 
@@ -81,7 +86,7 @@ function initCalander(is_1stcall) {
 
     }
 
-    
+
     $("#tables").html(HtmlScript);
     /* // used to but the tables side by side
     document.write("<table width='100%' height='100%'  border=0>");
@@ -103,12 +108,12 @@ function makeArray(n) {
 
 function fill_table(m_name, m_length, mm) {
     day = 1;
-    var HtmlScript="";
+    var HtmlScript = "";
 
-    HtmlScript += "<center><TABLE BORDER=3 class='table' style='font: 20px arial, sans-serif;'>" ;
+    HtmlScript += "<center><TABLE BORDER=3 class='table' style='font: 20px arial, sans-serif;'>";
     HtmlScript += "<thead class='head-color'>";
-    HtmlScript += "<TR><TD COLSPAN=7 ALIGN=center><strong><p>" + m_name + "</p><p>" + this_year + "</p></strong></TD></TR>" ;
-    
+    HtmlScript += "<TR><TD COLSPAN=7 ALIGN=center><strong><p>" + m_name + "</p><p>" + this_year + "</p></strong></TD></TR>";
+
     HtmlScript += "<TR>";
     HtmlScript += day_title("Hbshba (هبشبا)")
     HtmlScript += day_title("Etryn Hbshba (اترين هبشبا)")
@@ -130,20 +135,20 @@ function fill_table(m_name, m_length, mm) {
     }
     HtmlScript += "</TR>";
     */
-   // HtmlScript +=  "<TR>" ;
+    // HtmlScript +=  "<TR>" ;
     while (day <= m_length) {
-        HtmlScript +=  "<TR>" ;
+        HtmlScript += "<TR>";
         for (var i = 1; i <= 7 && day <= m_length; i++) {
             //document.write("<TD id='nowday' ALIGN=center>")
-            HtmlScript +=  hilite_today(day, mm) ;
-           // HtmlScript += (day + "</TD>") ;
+            HtmlScript += hilite_today(day, mm);
+            // HtmlScript += (day + "</TD>") ;
             day++
         }
-        HtmlScript += "</TR>" ;
+        HtmlScript += "</TR>";
     }
     HtmlScript += "</tbody>";
-    HtmlScript +=  "</TABLE></center><BR><BR>" ;
-    start_day = i ;
+    HtmlScript += "</TABLE></center><BR><BR>";
+    start_day = i;
 
     return HtmlScript;
 }
