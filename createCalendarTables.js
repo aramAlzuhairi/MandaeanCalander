@@ -29,17 +29,12 @@ function initCalander(is_1stcall) {
     month_length[11] = 30
     month_length[12] = 30
 
-    var dateCalanderCreated = new Date("7-18-2017")//new Date("1-8-2018") ;
-    if (!isNaN(dateCalanderCreated.getTime())) // in Iphone ,Ipad, Mac
-        dateCalanderCreated = new Date("7/18/2017")
+    var dateCalanderCreated = new Date("7/18/2017")//new Date("1-8-2018") ;// in Iphone ,Ipad, Mac
 
     var mandaeanCalanderCreated = { month: 11, day: 1, year: 2052 };   //{month:4 , day:25 , year:2052}; // 4-25 (8-1-2018)
 
     var datePicker = $("#datepickerC").val().split('-');
-    today = new Date(datePicker[1] + "-" + datePicker[2] + "-" + datePicker[0]); // "1-14-2017"
-
-    if (!isNaN(today.getTime())) // in Iphone ,Ipad, Mac
-        today = new Date(datePicker[1] + "/" + datePicker[2] + "/" + datePicker[0])
+    today = new Date(datePicker[1] + "/" + datePicker[2] + "/" + datePicker[0]); // "1-14-2017"
 
     var result = showDays(today, dateCalanderCreated); // find different in days
 

@@ -10,6 +10,7 @@ function showDays(firstDate, secondDate) {
         var millisBetween = firstShorten.getTime() - secondShorten.getTime();
         var days = millisBetween / millisecondsPerDay;
     */
+    
     var a = moment(firstDate);
     var b = moment(secondDate);
     days = a.diff(b, 'days');
