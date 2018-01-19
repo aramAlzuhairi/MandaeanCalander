@@ -81,6 +81,12 @@ function initCalander(is_1stcall) {
 
 
     $("#tables").html(HtmlScript);
+
+
+
+    $('#dayNow').scrollView(); // focus to day now in table 
+
+
     /* // used to but the tables side by side
     document.write("<table width='100%' height='100%'  border=0>");
     document.write("<tr><td>");

@@ -1,5 +1,5 @@
-function defaultdateToNow(){
-$("#datepickerC").val($.datepicker.formatDate('yy-mm-dd', new Date()));
+function defaultdateToNow() {
+    $("#datepickerC").val($.datepicker.formatDate('yy-mm-dd', new Date()));
 }
 
 function showDays(firstDate, secondDate) {
@@ -10,7 +10,7 @@ function showDays(firstDate, secondDate) {
         var millisBetween = firstShorten.getTime() - secondShorten.getTime();
         var days = millisBetween / millisecondsPerDay;
     */
-    
+
     var a = moment(firstDate);
     var b = moment(secondDate);
     days = a.diff(b, 'days');
@@ -19,14 +19,14 @@ function showDays(firstDate, secondDate) {
 
 
 function day_title(day_name) {
-   return "<th ALIGN=center WIDTH=150>" + day_name + "</th>" ;
+    return "<th ALIGN=center WIDTH=150>" + day_name + "</th>";
 }
 
 function hilite_today(day, mm) {
     if ((this_day == day) && (this_month == mm)) {
-       return "<TD class='alert-info' ALIGN=center >" + day + "</TD>" ;
+        return "<TD class='alert-info' ALIGN=center id='dayNow'>" + day + "</TD>";
     }
     else {
-        return "<TD  ALIGN=center>" + day + "</TD>" ;
+        return "<TD  ALIGN=center>" + day + "</TD>";
     }
 }
