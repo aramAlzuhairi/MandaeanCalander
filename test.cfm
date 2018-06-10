@@ -1,6 +1,6 @@
-<cfoutput>
-   <cfset local.t=3>
-
-
-   <cfdump var='#local.t#'> 
-</cfoutput>
+<html>
+<head><title>Hello World</title></head>
+<body>
+<cfoutput>#ucase("<h1>hello world</h1>")#</cfoutput>
+</body>
+</html>
